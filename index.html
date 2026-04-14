@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototypes</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #101010;
+      --card:   #1a1a1a;
+      --border: #2a2a2a;
+      --hover:  #242424;
+      --text:   #e0e0e0;
+      --dim:    #6a6a6a;
+      --faint:  #333;
+      --accent: #888;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+      min-height: 100vh;
+      padding: 48px 24px 64px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header {
+      max-width: 720px;
+      margin: 0 auto 40px;
+    }
+
+    .title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 6px;
+    }
+
+    .path {
+      font-size: 12px;
+      color: var(--faint);
+    }
+
+    .grid {
+      max-width: 720px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.12s, border-color 0.12s;
+    }
+
+    .card:hover {
+      background: var(--hover);
+      border-color: var(--accent);
+    }
+
+    .card-emoji {
+      font-size: 20px;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--border);
+      border-radius: 5px;
+      margin-top: 1px;
+    }
+
+    .card-body { flex: 1; min-width: 0; }
+
+    .card-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: var(--dim);
+      line-height: 1.5;
+    }
+
+    .card-arrow {
+      flex-shrink: 0;
+      font-size: 14px;
+      color: var(--faint);
+      margin-top: 2px;
+      transition: color 0.12s;
+    }
+
+    .card:hover .card-arrow { color: var(--accent); }
+
+    .error {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 24px;
+      text-align: center;
+      color: var(--dim);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .error code {
+      display: inline-block;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    .count {
+      font-size: 12px;
+      color: var(--faint);
+      margin-left: 8px;
+      font-weight: 400;
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 32px 16px 48px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="title">Prototypes <span class="count" id="count"></span></div>
+    <div class="path" id="path"></div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+<script>
+const grid    = document.getElementById('grid');
+const countEl = document.getElementById('count');
+const pathEl  = document.getElementById('path');
+
+// Show the current directory path for context
+try { pathEl.textContent = window.location.pathname.replace(/\/index\.html$/, '/'); } catch(e) {}
+
+// ── Prototype registry ──
+// Add new entries here. Each needs: name, description, folder (relative path), and optionally emoji.
+const PROTOTYPES = [
+  { name: "Get Sh*t Done",    description: "Focus / Prioritize / Brain Dump task manager",                     folder: "../my-tasks-app",   emoji: "✓" },
+  { name: "Annual Planner",   description: "Weekly sprint planner with year, sprint, month, and week goals",    folder: "../annual-planner", emoji: "📅" },
+  { name: "The Waiting List", description: "Purchase delay tool — resist impulse buys",                        folder: "../waiting-list",   emoji: "⏳" },
+  { name: "Meal Planner",     description: "Weekly + daily meal planner with library, servings, and macros",    folder: "../meal-planner",   emoji: "🍽" },
+  { name: "Habit Tracker",    description: "Monthly + annual habit tracking with streaks",                      folder: "../habit-tracker",  emoji: "🔥" },
+  { name: "Memento Mori",     description: "Life in weeks — 80-year mortality visualization",                   folder: "../memento-mori",   emoji: "💀" },
+];
+
+countEl.textContent = PROTOTYPES.length;
+grid.innerHTML = PROTOTYPES.map(item => {
+  const href = (item.folder || '.').replace(/\/$/, '') + '/index.html';
+  const emoji = item.emoji || '>';
+  return `<a class="card" href="${href}" target="_blank" rel="noopener">
+    <div class="card-emoji">${emoji}</div>
+    <div class="card-body">
+      <div class="card-name">${esc(item.name)}</div>
+      ${item.description ? `<div class="card-desc">${esc(item.description)}</div>` : ''}
+    </div>
+    <span class="card-arrow">&rarr;</span>
+  </a>`;
+}).join('');
+
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>

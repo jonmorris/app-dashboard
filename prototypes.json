@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Get Sh*t Done",
+    "description": "Focus / Prioritize / Brain Dump task manager",
+    "folder": "../my-tasks-app",
+    "emoji": "✓"
+  },
+  {
+    "name": "Annual Planner",
+    "description": "Weekly sprint planner with year, sprint, month, and week goals",
+    "folder": "../annual-planner",
+    "emoji": "📅"
+  },
+  {
+    "name": "The Waiting List",
+    "description": "Purchase delay tool — resist impulse buys",
+    "folder": "../waiting-list",
+    "emoji": "⏳"
+  },
+  {
+    "name": "Meal Planner",
+    "description": "Weekly + daily meal planner with library, servings, and macros",
+    "folder": "../meal-planner",
+    "emoji": "🍽"
+  },
+  {
+    "name": "Habit Tracker",
+    "description": "Monthly + annual habit tracking with streaks",
+    "folder": "../habit-tracker",
+    "emoji": "🔥"
+  },
+  {
+    "name": "Memento Mori",
+    "description": "Life in weeks — 80-year mortality visualization",
+    "folder": "../memento-mori",
+    "emoji": "💀"
+  }
+]
