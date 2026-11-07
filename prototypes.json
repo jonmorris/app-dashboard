@@ -36,12 +36,6 @@
     "emoji": "💀"
   },
   {
-    "name": "Watch Collector",
-    "description": "Watch collection tracker",
-    "url": "https://jonmorris.github.io/Watch-Collector/",
-    "emoji": "⌚"
-  },
-  {
     "name": "Spell Slots",
     "description": "Priority tracker built on a finite daily pool of slots",
     "url": "https://jonmorris.github.io/spell-slots/",
@@ -76,11 +70,5 @@
     "description": "Daily planner with playbook and analytics",
     "url": "https://jonmorris.github.io/ADHD-Plan/",
     "emoji": "🧠"
-  },
-  {
-    "name": "Counter",
-    "description": "Minimal tap counter with adjustable step size",
-    "url": "https://jonmorris.github.io/Counter/",
-    "emoji": "🔢"
   }
 ]
