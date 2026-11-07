@@ -34,5 +34,53 @@
     "description": "Life in weeks — 80-year mortality visualization",
     "url": "https://jonmorris.github.io/memento-mori/",
     "emoji": "💀"
+  },
+  {
+    "name": "Watch Collector",
+    "description": "Watch collection tracker",
+    "url": "https://jonmorris.github.io/Watch-Collector/",
+    "emoji": "⌚"
+  },
+  {
+    "name": "Spell Slots",
+    "description": "Priority tracker built on a finite daily pool of slots",
+    "url": "https://jonmorris.github.io/spell-slots/",
+    "emoji": "✨"
+  },
+  {
+    "name": "Calorie Debt",
+    "description": "BurnDown — weight-loss calorie debt dashboard",
+    "url": "https://jonmorris.github.io/Calorie-debt/",
+    "emoji": "📉"
+  },
+  {
+    "name": "Downsize Tracker",
+    "description": "Track what you're selling, giving away, and throwing out",
+    "url": "https://jonmorris.github.io/Downsize-Tracker/",
+    "emoji": "📦"
+  },
+  {
+    "name": "Fit Maker",
+    "description": "Catalog your wardrobe, build outfits, buy smarter",
+    "url": "https://jonmorris.github.io/Fit-maker/",
+    "emoji": "👕"
+  },
+  {
+    "name": "Work Priorities",
+    "description": "Project priority tracker with a completed-work archive",
+    "url": "https://jonmorris.github.io/work-priorities/",
+    "emoji": "📌"
+  },
+  {
+    "name": "ADHD Plan",
+    "description": "Daily planner with playbook and analytics",
+    "url": "https://jonmorris.github.io/ADHD-Plan/",
+    "emoji": "🧠"
+  },
+  {
+    "name": "Counter",
+    "description": "Minimal tap counter with adjustable step size",
+    "url": "https://jonmorris.github.io/Counter/",
+    "emoji": "🔢"
   }
 ]
